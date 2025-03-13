@@ -47,6 +47,11 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-squid-pink/20 rounded-full filter blur-3xl animate-float"></div>
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-squid-blue/20 rounded-full filter blur-3xl animate-float" style={{ animationDelay: "2s" }}></div>
+        
+        {/* Squid Game shapes */}
+        <div className="absolute top-1/3 right-[10%] squid-circle opacity-40"></div>
+        <div className="absolute bottom-1/3 left-[10%] squid-triangle opacity-40"></div>
+        <div className="absolute top-2/3 right-[30%] squid-square opacity-40"></div>
       </div>
       
       {/* Content */}
@@ -55,12 +60,20 @@ const Hero = () => {
           <p className="inline-block px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm text-xs font-medium border border-white/10 mb-6">
             3<sup>rd</sup> Edition • Powered by DevTrack
           </p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 text-shadow">
+          <h1 className="font-squid text-4xl md:text-6xl lg:text-7xl tracking-tight mb-4 text-shadow">
             <span className="text-gradient">DevArena</span> 2023
           </h1>
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-8">
             A three-day tech extravaganza inspired by Squid Game
           </p>
+          
+          {/* Squid Game Player Numbers */}
+          <div className="flex justify-center gap-3 mb-8">
+            <div className="squid-number w-10 h-10 animate-squid-pulse" style={{ animationDelay: "0s" }}>456</div>
+            <div className="squid-number w-10 h-10 animate-squid-pulse" style={{ animationDelay: "0.5s" }}>218</div>
+            <div className="squid-number w-10 h-10 animate-squid-pulse" style={{ animationDelay: "1s" }}>067</div>
+            <div className="squid-number w-10 h-10 animate-squid-pulse" style={{ animationDelay: "1.5s" }}>001</div>
+          </div>
           
           {/* Countdown timer */}
           <div className="mt-12 mb-10">
@@ -80,7 +93,7 @@ const Hero = () => {
                     item.label === "Minutes" ? "border-squid-pink" : "border-squid-blue"
                   )}
                 >
-                  <span className="text-2xl md:text-3xl font-bold">{item.value}</span>
+                  <span className="font-squid text-2xl md:text-3xl font-bold">{item.value}</span>
                   <span className="text-xs md:text-sm text-white/70">{item.label}</span>
                 </div>
               ))}
@@ -90,13 +103,13 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
             <a 
               href="#register" 
-              className="squid-border px-8 py-3 rounded-lg font-medium text-white transition-all duration-300 hover:bg-squid-pink/20"
+              className="squid-border font-squid px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-squid-pink/20"
             >
               Register Now
             </a>
             <a 
               href="#events" 
-              className="squid-border-blue px-8 py-3 rounded-lg font-medium text-white transition-all duration-300 hover:bg-squid-blue/20"
+              className="squid-border-blue font-squid px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-squid-blue/20"
             >
               Explore Events
             </a>

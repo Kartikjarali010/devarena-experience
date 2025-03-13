@@ -43,8 +43,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <span className="font-bold text-xl md:text-2xl text-gradient">
-              DevArena <span className="text-xs align-super">3.0</span>
+            <span className="font-squid text-xl md:text-2xl text-gradient">
+              DevArena <span className="text-xs align-super font-sans">3.0</span>
             </span>
           </div>
           

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -105,6 +104,16 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
+        "squid-pulse": {
+          "0%, 100%": { 
+            opacity: "1",
+            transform: "scale(1)"
+          },
+          "50%": { 
+            opacity: "0.5",
+            transform: "scale(1.05)"
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -115,9 +124,11 @@ export default {
         "pulse-glow": "pulse-glow 3s infinite",
         "float": "float 6s ease-in-out infinite",
         "gradient-shift": "gradient-shift 6s ease infinite",
+        "squid-pulse": "squid-pulse 2s ease-in-out infinite",
       },
       fontFamily: {
         sans: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
+        squid: ["Game Of Squids", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
