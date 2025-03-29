@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -36,19 +36,19 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
         isScrolled
-          ? "bg-[#0B0C0D]/90 backdrop-blur-md shadow-lg py-3"
+          ? "bg-marvel-dark/90 backdrop-blur-md shadow-lg py-3"
           : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            {/* Squid Game Triangle Logo */}
-            <div className="w-7 h-7 relative">
-              <div className="absolute w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-b-[24px] border-b-[#FF0F7B]"></div>
+            {/* Marvel Shield Logo */}
+            <div className="w-8 h-8 rounded-full bg-marvel-blue border-2 border-marvel-red flex items-center justify-center animate-shield-spin">
+              <div className="w-4 h-4 bg-white rounded-full"></div>
             </div>
             
-            <span className="font-squid text-xl md:text-2xl text-[#FF0F7B]">
+            <span className="font-marvel text-2xl md:text-3xl text-marvel-red">
               DevArena <span className="text-xs align-super font-sans">3.0</span>
             </span>
           </div>
@@ -59,17 +59,17 @@ const Navbar = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm text-white/70 hover:text-white transition-colors duration-300 hover:text-[#FF0F7B]"
+                className="text-sm text-white/70 hover:text-white transition-colors duration-300 hover:text-marvel-red"
               >
                 {item.name}
               </a>
             ))}
             <a 
               href="#register" 
-              className="border border-[#FF0F7B] inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 text-white hover:bg-[#FF0F7B]/20"
+              className="border border-marvel-red inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 text-white hover:bg-marvel-red/20"
             >
-              <div className="squid-number w-5 h-5 mr-2 text-xs">456</div>
-              Register
+              <div className="hero-number w-5 h-5 mr-2 text-xs">A</div>
+              Assemble
             </a>
           </div>
           
@@ -93,8 +93,8 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div
         className={cn(
-          "absolute top-full left-0 right-0 bg-[#0B0C0D]/95 backdrop-blur-md shadow-lg transition-all duration-300 ease-in-out overflow-hidden md:hidden",
-          mobileMenuOpen ? "max-h-[400px] border-b border-[#FF0F7B]/20" : "max-h-0"
+          "absolute top-full left-0 right-0 bg-marvel-dark/95 backdrop-blur-md shadow-lg transition-all duration-300 ease-in-out overflow-hidden md:hidden",
+          mobileMenuOpen ? "max-h-[400px] border-b border-marvel-red/20" : "max-h-0"
         )}
       >
         <div className="px-4 py-2 space-y-1">
@@ -110,19 +110,19 @@ const Navbar = () => {
           ))}
           <a
             href="#register"
-            className="block py-3 mt-2 text-[#FF0F7B] flex items-center"
+            className="block py-3 mt-2 text-marvel-red flex items-center"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="squid-number w-5 h-5 mr-2 text-xs">456</div>
-            Register
+            <div className="hero-number w-5 h-5 mr-2 text-xs">A</div>
+            Assemble Now
           </a>
         </div>
         
-        {/* Squid Game Shapes at bottom of mobile menu */}
+        {/* Marvel icons at bottom of mobile menu */}
         <div className="flex justify-center space-x-8 py-4">
-          <div className="w-6 h-6 squid-circle opacity-70"></div>
-          <div className="w-6 h-6 squid-triangle opacity-70"></div>
-          <div className="w-6 h-6 squid-square opacity-70"></div>
+          <div className="avengers-shield w-8 h-8"></div>
+          <div className="iron-man-circle w-6 h-6"></div>
+          <Shield className="w-6 h-6 text-marvel-blue" />
         </div>
       </div>
     </nav>

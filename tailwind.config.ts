@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,11 +53,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        squid: {
-          pink: "#FF0F7B",
-          blue: "#00C2FF",
-          dark: "#0A0A0A",
-          gray: "#1E1E1E",
+        marvel: {
+          red: "#ED1D24",
+          blue: "#0476F2",
+          dark: "#15151E",
+          gray: "#2D2D38",
+          gold: "#F0C000",
         }
       },
       borderRadius: {
@@ -87,11 +89,11 @@ export default {
         },
         "pulse-glow": {
           "0%, 100%": { 
-            boxShadow: "0 0 10px rgba(255, 15, 123, 0.7), 0 0 20px rgba(0, 194, 255, 0.5)",
+            boxShadow: "0 0 10px rgba(237, 29, 36, 0.7), 0 0 20px rgba(4, 118, 242, 0.5)",
             transform: "scale(1)"
           },
           "50%": { 
-            boxShadow: "0 0 15px rgba(255, 15, 123, 0.9), 0 0 30px rgba(0, 194, 255, 0.7)",
+            boxShadow: "0 0 15px rgba(237, 29, 36, 0.9), 0 0 30px rgba(4, 118, 242, 0.7)",
             transform: "scale(1.01)"
           },
         },
@@ -104,7 +106,7 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
         },
-        "squid-pulse": {
+        "hero-pulse": {
           "0%, 100%": { 
             opacity: "1",
             transform: "scale(1)"
@@ -113,6 +115,10 @@ export default {
             opacity: "0.5",
             transform: "scale(1.05)"
           },
+        },
+        "shield-spin": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
       animation: {
@@ -124,15 +130,17 @@ export default {
         "pulse-glow": "pulse-glow 3s infinite",
         "float": "float 6s ease-in-out infinite",
         "gradient-shift": "gradient-shift 6s ease infinite",
-        "squid-pulse": "squid-pulse 2s ease-in-out infinite",
+        "hero-pulse": "hero-pulse 2s ease-in-out infinite",
+        "shield-spin": "shield-spin 8s linear infinite",
       },
       fontFamily: {
         sans: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
-        squid: ["Game Of Squids", "sans-serif"],
+        marvel: ["Marvel", "Bangers", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "squid-gradient": "linear-gradient(45deg, #FF0F7B, #00C2FF)",
+        "marvel-gradient": "linear-gradient(45deg, #ED1D24, #0476F2)",
+        "hero-pattern": "url('/marvel-background.jpg')",
       },
     },
   },
