@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X, Shield, Zap, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -10,16 +10,17 @@ interface NavItem {
 
 const navigationItems: NavItem[] = [
   { name: "Home", href: "#home" },
-  { name: "Events", href: "#events" },
+  { name: "Universes", href: "#events" },
   { name: "Timeline", href: "#timeline" },
-  { name: "About", href: "#about" },
-  { name: "Team", href: "#team" },
-  { name: "Sponsors", href: "#sponsors" },
+  { name: "Characters", href: "#about" },
+  { name: "Heroes", href: "#team" },
+  { name: "Allies", href: "#sponsors" },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentUniverse, setCurrentUniverse] = useState("Earth-616");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,8 +28,17 @@ const Navbar = () => {
       setIsScrolled(scrollPosition > 50);
     };
 
+    // Multiverse universe switch effect
+    const universeInterval = setInterval(() => {
+      const universes = ["Earth-616", "Earth-199999", "Earth-1610", "Earth-838"];
+      setCurrentUniverse(universes[Math.floor(Math.random() * universes.length)]);
+    }, 5000);
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearInterval(universeInterval);
+    };
   }, []);
 
   return (
@@ -43,14 +53,19 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            {/* Marvel Shield Logo */}
-            <div className="w-8 h-8 rounded-full bg-marvel-blue border-2 border-marvel-red flex items-center justify-center animate-shield-spin">
-              <div className="w-4 h-4 bg-white rounded-full"></div>
+            {/* Captain America Shield Logo */}
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-marvel-red via-white to-marvel-blue border-2 border-marvel-red flex items-center justify-center animate-shield-spin">
+              <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                <span className="text-marvel-blue text-xs font-bold">A</span>
+              </div>
             </div>
             
-            <span className="font-marvel text-2xl md:text-3xl text-marvel-red">
-              DevArena <span className="text-xs align-super font-sans">3.0</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-marvel text-2xl md:text-3xl text-marvel-red">
+                DevArena <span className="text-xs align-super font-sans">3.0</span>
+              </span>
+              <span className="text-[10px] text-white/60 -mt-1">{currentUniverse}</span>
+            </div>
           </div>
           
           {/* Desktop navigation */}
@@ -123,6 +138,8 @@ const Navbar = () => {
           <div className="avengers-shield w-8 h-8"></div>
           <div className="iron-man-circle w-6 h-6"></div>
           <Shield className="w-6 h-6 text-marvel-blue" />
+          <Globe className="w-6 h-6 text-marvel-gold" />
+          <Zap className="w-6 h-6 text-marvel-red" />
         </div>
       </div>
     </nav>

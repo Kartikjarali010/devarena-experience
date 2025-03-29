@@ -59,6 +59,10 @@ export default {
           dark: "#15151E",
           gray: "#2D2D38",
           gold: "#F0C000",
+          purple: "#9C27B0",  // Mind Stone / Thanos
+          green: "#4CAF50",   // Time Stone
+          orange: "#FF9800",  // Soul Stone
+          cosmic: "#3D1D4E",  // Cosmic energy
         }
       },
       borderRadius: {
@@ -120,6 +124,18 @@ export default {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        "reality-shift": {
+          "0%, 100%": { filter: "hue-rotate(0deg)" },
+          "50%": { filter: "hue-rotate(15deg)" },
+        },
+        "portal-open": {
+          "0%": { transform: "scale(0)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        "portal-glow": {
+          "0%, 100%": { boxShadow: "0 0 15px currentColor" },
+          "50%": { boxShadow: "0 0 30px currentColor, 0 0 50px currentColor" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -132,6 +148,9 @@ export default {
         "gradient-shift": "gradient-shift 6s ease infinite",
         "hero-pulse": "hero-pulse 2s ease-in-out infinite",
         "shield-spin": "shield-spin 8s linear infinite",
+        "reality-shift": "reality-shift 10s ease-in-out infinite",
+        "portal-open": "portal-open 1.5s ease-out",
+        "portal-glow": "portal-glow 2s ease-in-out infinite",
       },
       fontFamily: {
         sans: ["Inter", "SF Pro Display", "system-ui", "sans-serif"],
@@ -140,6 +159,7 @@ export default {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "marvel-gradient": "linear-gradient(45deg, #ED1D24, #0476F2)",
+        "marvel-multiverse": "linear-gradient(45deg, #ED1D24, #0476F2, #9C27B0, #F0C000)",
         "hero-pattern": "url('/marvel-background.jpg')",
       },
     },
