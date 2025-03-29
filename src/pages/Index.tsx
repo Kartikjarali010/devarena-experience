@@ -12,6 +12,8 @@ import Footer from "@/components/Footer";
 const Index = () => {
   // State for multiverse reality shifts
   const [realityShift, setRealityShift] = useState(false);
+  // State for current universe
+  const [currentUniverse, setCurrentUniverse] = useState("Earth-616");
   
   useEffect(() => {
     // Intersection Observer for reveal animations
@@ -40,6 +42,17 @@ const Index = () => {
       setTimeout(() => {
         overlay.remove();
       }, 200);
+      
+      // Change universe on reality shift
+      const universes = [
+        "Earth-616", // Main Marvel Universe
+        "Earth-199999", // MCU
+        "Earth-1610", // Ultimate Marvel
+        "Earth-838", // Illuminati Universe
+        "Earth-TRN732", // Spider-Verse
+        "Earth-15513", // Battleworld
+      ];
+      setCurrentUniverse(universes[Math.floor(Math.random() * universes.length)]);
       
     }, 45000); // Reality shifts happen every 45 seconds
     
@@ -82,6 +95,12 @@ const Index = () => {
       {/* Multiverse overlay effect */}
       <div className={`fixed inset-0 bg-marvel-red/5 mix-blend-overlay pointer-events-none multiverse-flash z-10`}></div>
       
+      {/* Universe identifier */}
+      <div className="fixed top-24 right-5 z-50 glass-panel rounded-lg px-3 py-1 text-xs font-marvel">
+        <span className="text-marvel-gold">Current Universe: </span>
+        <span className="text-white">{currentUniverse}</span>
+      </div>
+      
       <Navbar />
       <Hero />
       <EventDays />
@@ -91,21 +110,24 @@ const Index = () => {
       <Sponsors />
       <Footer />
       
-      {/* Multiverse portal decorations */}
-      <div className="fixed right-5 top-1/4 portal-ring opacity-20 pointer-events-none z-0"></div>
-      <div className="fixed left-5 bottom-1/4 dr-strange-circle opacity-20 pointer-events-none z-0"></div>
+      {/* Enhanced multiverse decorations */}
+      <div className="fixed right-5 top-1/4 w-24 h-24 portal-ring opacity-20 pointer-events-none z-0"></div>
+      <div className="fixed left-5 bottom-1/4 w-32 h-32 dr-strange-circle opacity-20 pointer-events-none z-0"></div>
       
       {/* Infinity stones decoration */}
       <div className="fixed left-5 top-1/3 flex flex-col gap-3 opacity-20 pointer-events-none z-0">
-        <div className="infinity-stone stone-space"></div>
-        <div className="infinity-stone stone-mind"></div>
-        <div className="infinity-stone stone-reality"></div>
+        <div className="infinity-stone stone-space w-6 h-6"></div>
+        <div className="infinity-stone stone-mind w-6 h-6"></div>
+        <div className="infinity-stone stone-reality w-6 h-6"></div>
       </div>
       <div className="fixed right-5 bottom-1/3 flex flex-col gap-3 opacity-20 pointer-events-none z-0">
-        <div className="infinity-stone stone-power"></div>
-        <div className="infinity-stone stone-time"></div>
-        <div className="infinity-stone stone-soul"></div>
+        <div className="infinity-stone stone-power w-6 h-6"></div>
+        <div className="infinity-stone stone-time w-6 h-6"></div>
+        <div className="infinity-stone stone-soul w-6 h-6"></div>
       </div>
+      
+      {/* Quantum realm particles */}
+      <div className="quantum-particles fixed inset-0 pointer-events-none z-0"></div>
     </div>
   );
 };

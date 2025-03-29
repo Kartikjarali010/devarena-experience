@@ -60,70 +60,116 @@ const Timeline = () => {
   }, []);
   
   return (
-    <section id="timeline" className="relative py-20 md:py-32 bg-squid-gray/30">
-      <div className="container mx-auto px-4">
+    <section id="timeline" className="relative py-20 md:py-32 bg-marvel-dark">
+      {/* Cosmic background elements */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute top-0 right-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute top-1/3 left-20 w-40 h-40 bg-marvel-purple rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-40 w-60 h-60 bg-marvel-blue/30 rounded-full filter blur-2xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-sm uppercase tracking-wider text-white/50 mb-3 reveal slide-up">Event Schedule</h2>
+          <h2 className="text-sm uppercase tracking-wider text-marvel-gold mb-3 reveal slide-up">Sacred Timeline</h2>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 reveal slide-up" data-delay="1">
-            DevArena <span className="text-gradient">Timeline</span>
+            <span className="text-marvel-red">Event</span> <span className="text-white">Chronology</span>
           </h3>
           <p className="max-w-2xl mx-auto text-white/70 reveal slide-up" data-delay="2">
-            Plan your DevArena experience with our comprehensive event schedule.
-            Don't miss any of the exciting challenges and activities!
+            Follow the sacred timeline of DevArena events across all moments that branch from this reality.
+            Be cautious of timeline violations!
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 mt-8 reveal slide-up" data-delay="3">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              <CalendarDays className="h-4 w-4 text-squid-pink" />
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-marvel-dark border border-marvel-blue">
+              <CalendarDays className="h-4 w-4 text-marvel-blue" />
               <span className="text-sm">September 15-17, 2023</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              <Clock className="h-4 w-4 text-squid-blue" />
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-marvel-dark border border-marvel-gold">
+              <Clock className="h-4 w-4 text-marvel-gold" />
               <span className="text-sm">9:00 AM - 7:00 PM</span>
             </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-              <MapPin className="h-4 w-4 text-white" />
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-marvel-dark border border-marvel-red">
+              <MapPin className="h-4 w-4 text-marvel-red" />
               <span className="text-sm">REVA University, Bangalore</span>
             </div>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {[1, 2, 3].map((day) => (
-            <div key={day} className="glass-panel rounded-xl p-6 reveal slide-up" data-delay={day}>
-              <div className="flex items-center justify-between mb-6">
-                <h4 className="text-xl font-bold">
-                  Day {day}
-                  <span className="text-gradient"> / </span>
-                  <span className="text-white/80">
-                    {day === 1 ? "Code Royale" : day === 2 ? "REVA Got Talent" : "Final Frontier"}
-                  </span>
-                </h4>
-              </div>
+        {/* Timeline visualization */}
+        <div className="relative mt-12 border-l-4 border-marvel-cosmic ml-6 md:ml-0 md:border-l-0 md:flex md:justify-center">
+          {/* Time Variance Authority central line (visible only on md+) */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-marvel-gold via-marvel-red to-marvel-blue"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0">
+            {timelineEvents.map((event, index) => {
+              // Alternate sides for medium screens and up
+              const isLeft = index % 2 === 0;
               
-              <div className="relative pl-6 border-l border-white/10">
-                {timelineEvents
-                  .filter(event => event.day === day)
-                  .map((event, index) => (
-                    <div 
-                      key={`${day}-${index}`} 
-                      className={cn(
-                        "mb-8 last:mb-0 relative transition-all duration-300 group",
-                        event.highlight ? "reveal slide-right" : "reveal slide-left"
-                      )}
-                      data-delay={index % 3 + 1}
-                    >
-                      <div className="absolute -left-[25px] w-4 h-4 rounded-full bg-squid-dark border-2 border-white/30 group-hover:border-squid-pink group-hover:scale-125 transition-all duration-300" />
-                      <div className="text-xs text-white/50 mb-1">{event.time}</div>
-                      <h5 className="text-base font-medium text-white group-hover:text-squid-pink transition-colors duration-300">
-                        {event.title}
-                      </h5>
-                      <p className="text-sm text-white/60 mt-1">{event.description}</p>
+              return (
+                <div 
+                  key={`event-${index}`}
+                  className={cn(
+                    "relative mb-8 md:mb-16 reveal",
+                    isLeft ? "md:pr-10 md:text-right md:slide-right" : "md:pl-10 md:ml-auto md:slide-left",
+                    event.highlight ? "md:translate-y-4" : ""
+                  )}
+                  data-delay={index % 3}
+                >
+                  {/* Connection to timeline */}
+                  <div 
+                    className={cn(
+                      "hidden md:block absolute top-6 w-10 h-1",
+                      isLeft ? "right-0 bg-gradient-to-r from-transparent to-marvel-gold" : "left-0 bg-gradient-to-l from-transparent to-marvel-red"
+                    )}
+                  ></div>
+                  
+                  {/* Event marker */}
+                  <div 
+                    className={cn(
+                      "absolute -left-[29px] md:static md:hidden w-14 h-14 flex items-center justify-center rounded-full",
+                      event.day === 1 ? "bg-marvel-red" : event.day === 2 ? "bg-marvel-gold" : "bg-marvel-blue"
+                    )}
+                  >
+                    <div className="w-10 h-10 rounded-full bg-marvel-dark flex items-center justify-center">
+                      <span className="text-lg font-marvel">{event.day}</span>
                     </div>
-                  ))}
-              </div>
-            </div>
-          ))}
+                  </div>
+                  
+                  {/* Circle on the timeline for desktop */}
+                  <div 
+                    className={cn(
+                      "hidden md:block absolute top-6 md:left-1/2 transform md:-translate-x-1/2 w-5 h-5 rounded-full border-4 border-marvel-dark",
+                      event.day === 1 ? "bg-marvel-red" : event.day === 2 ? "bg-marvel-gold" : "bg-marvel-blue"
+                    )}
+                  ></div>
+                  
+                  {/* Event content */}
+                  <div 
+                    className={cn(
+                      "ml-10 md:ml-0 p-4 rounded-lg transition-all group hover:scale-105 duration-300",
+                      event.highlight ? "marvel-border" : "border border-white/10"
+                    )}
+                  >
+                    <div className="text-xs text-white/50 mb-1">{event.time}</div>
+                    <h5 className={cn(
+                      "text-base font-medium transition-colors duration-300",
+                      event.day === 1 ? "text-marvel-red" : event.day === 2 ? "text-marvel-gold" : "text-marvel-blue"
+                    )}>
+                      {event.title}
+                    </h5>
+                    <p className="text-sm text-white/60 mt-1">{event.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        
+        {/* Time Variance Authority logo */}
+        <div className="flex justify-center mt-16">
+          <div className="w-20 h-20 rounded-full bg-marvel-cosmic border-4 border-marvel-gold flex items-center justify-center">
+            <div className="text-2xl font-marvel text-white">TVA</div>
+          </div>
         </div>
       </div>
     </section>
